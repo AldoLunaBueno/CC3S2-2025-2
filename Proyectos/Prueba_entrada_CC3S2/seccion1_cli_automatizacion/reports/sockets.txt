@@ -1,0 +1,13 @@
+ss -tuln
+Netid State  Recv-Q Send-Q     Local Address:Port Peer Address:PortProcess
+udp   UNCONN 0      0            10.43.201.1:53        0.0.0.0:*          
+udp   UNCONN 0      0          127.0.0.53%lo:53        0.0.0.0:*          
+udp   UNCONN 0      0      0.0.0.0%mpqemubr0:67        0.0.0.0:*          
+udp   UNCONN 0      0              127.0.0.1:323       0.0.0.0:*          
+udp   UNCONN 0      0                  [::1]:323          [::]:*          
+tcp   LISTEN 0      4096       127.0.0.53%lo:53        0.0.0.0:*          
+tcp   LISTEN 0      32           10.43.201.1:53        0.0.0.0:*          
+
+Los puertos abiertos innecesariamente exponen al sistema a ataques de denegación de servicio, fugaz de información e integridad comprometida. Se recomienda cerrar los servicios no requeridos y limitar el acceso con firewall a las interfaces que realmente sean necesarias. Listamos los puertos y sus riesgos:
+  Puerto 53: Usado para resolucíon de nombres. Puede ser explotado por ataques de amplificación DDoS.
+  Puerto 67: Usado por servidores DHCP. Un atacante puede enviar respuestas falsas y realizar ataques spoofing.

@@ -1,0 +1,18 @@
+A
+example.com.		224	IN	A	23.192.228.84
+example.com.		224	IN	A	23.215.0.136
+example.com.		224	IN	A	23.192.228.80
+example.com.		224	IN	A	23.220.75.245
+example.com.		224	IN	A	23.215.0.138
+example.com.		224	IN	A	23.220.75.232
+AAAA
+example.com.		114	IN	AAAA	2600:1406:bc00:53::b81e:94c8
+example.com.		114	IN	AAAA	2600:1406:5e00:6::17ce:bc12
+example.com.		114	IN	AAAA	2600:1406:5e00:6::17ce:bc1b
+example.com.		114	IN	AAAA	2600:1408:ec00:36::1736:7f24
+example.com.		114	IN	AAAA	2600:1408:ec00:36::1736:7f31
+example.com.		114	IN	AAAA	2600:1406:bc00:53::b81e:94ce
+MX
+example.com.		6582	IN	MX	0 .
+
+Un TTL bajo puede ser una carga considerable para el servidor DNS autorizado, ya que la copia cacheada expira muy rápido y el servidor de cacheo necesita consultar al servidor DNS con mucha frecuencia. También puede aumentar un poco la latencia, ya que cuando la copia cacheada expira es necesaria una búsqueda DNS que tarda unos 100 ms (mucho más que cuand ose cuenta con la copia cacheada), y con TTL bajo esto sucede frecuentemente. Pero un TTL bajo puede ser útil para servicios críticos que cambian de dirección. Un TTL alto aumenta el performance reduciendo la frecuencia de búsquedas DNS, pero también retrasa la propagación de cambios de los registros DNS. Por ejemplo, un TTL de 18474 como el del registro MX de example.com quiere decir que los cambios en este registro DNS tardan en propagarse unas 5 horas.
