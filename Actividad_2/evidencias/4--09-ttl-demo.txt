@@ -1,0 +1,25 @@
+
+; <<>> DiG 9.18.30-0ubuntu0.22.04.2-Ubuntu <<>> example.com A +ttlunits
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 49431
+;; flags: qr rd ra ad; QUERY: 1, ANSWER: 6, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 512
+;; QUESTION SECTION:
+;example.com.			IN	A
+
+;; ANSWER SECTION:
+example.com.		3m17s	IN	A	23.192.228.80
+example.com.		3m17s	IN	A	23.220.75.245
+example.com.		3m17s	IN	A	23.215.0.138
+example.com.		3m17s	IN	A	23.215.0.136
+example.com.		3m17s	IN	A	23.220.75.232
+example.com.		3m17s	IN	A	23.192.228.84
+
+;; Query time: 52 msec
+;; SERVER: 8.8.8.8#53(8.8.8.8) (UDP)
+;; WHEN: Fri Sep 12 16:59:59 -05 2025
+;; MSG SIZE  rcvd: 136
+
