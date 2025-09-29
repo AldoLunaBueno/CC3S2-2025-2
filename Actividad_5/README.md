@@ -4,7 +4,7 @@ Instalé la extensión WSL de VS Code para poder abrir VS Code directamente desd
 
 ## Parte 1
 
-### Ejercicios
+### 1.2 Crear un Makefile básico
 
 **Ejercicio 1.** Ejecuta make help y guarda la salida para análisis. Luego inspecciona .DEFAULT_GOAL y .PHONY dentro del Makefile.
 
@@ -60,3 +60,74 @@ La coincidencia demuestra que el paquete es reproducible. La opción --sort=name
 **Ejercicio 8.** Reproduce el error clásico "missing separator" sin tocar el Makefile original. Crea una copia, cambia el TAB inicial de una receta por espacios, y confirma el error.
 
 **Respuesta.** El error "missing separator" ocurre porque Make exige que cada línea de receta empiece con un carácter de TAB, no con espacios. Esto se debe a la sintaxis histórica del programa: los objetivos y prerequisitos van sin sangría, mientras que las acciones deben estar separadas visualmente mediante TAB. Si se sustituyen por espacios, Make no los reconoce como recetas y lanza este error. Para diagnosticarlo rápidamente, basta con revisar la línea reportada en el error y confirmar si comienza con TAB o con espacios invisibles. Editores que muestran caracteres ocultos o el comando cat -A ayudan a detectar el problema con facilidad.
+
+### 1.3 Crear un script Bash
+
+Ejecución y observación:
+
+```txt
+aldolunab@ALDO:~/repos/CC3S2-2025-2/Actividad_5$ chmod +x scripts/run_tests.sh
+aldolunab@ALDO:~/repos/CC3S2-2025-2/Actividad_5$ ./scripts/run_tests.sh 
+Demostrando pipefail:
+Sin pipefail: el pipe se considera exitoso (status 0).
+Con pipefail: se detecta el fallo (status != 0).
+Test pasó: Hello, World!
+aldolunab@ALDO:~/repos/CC3S2-2025-2/Actividad_5$ ./scripts/run_tests.sh 
+Demostrando pipefail:
+Sin pipefail: el pipe se considera exitoso (status 0).
+Con pipefail: se detecta el fallo (status != 0).
+Test falló: salida inesperada
+aldolunab@ALDO:~/repos/CC3S2-2025-2/Actividad_5$ ./scripts/run_tests.sh 
+Demostrando pipefail:
+Sin pipefail: el pipe se considera exitoso (status 0).
+Con pipefail: se detecta el fallo (status != 0).
+Test falló: salida inesperada
+aldolunab@ALDO:~/repos/CC3S2-2025-2/Actividad_5$ bash -x scripts/run_tests.sh
++ set -euo pipefail
++ IFS='
+        '
++ umask 027
++ set -o noclobber
++ PY=python3
++ SRC_DIR=src
+++ mktemp
++ tmp=/tmp/tmp.j0HA5B7DFI
++ trap 'cleanup $?' EXIT INT TERM
++ echo 'Demostrando pipefail:'
+Demostrando pipefail:
++ set +o pipefail
++ false
++ true
++ echo 'Sin pipefail: el pipe se considera exitoso (status 0).'
+Sin pipefail: el pipe se considera exitoso (status 0).
++ set -o pipefail
++ false
++ true
++ echo 'Con pipefail: se detecta el fallo (status != 0).'
+Con pipefail: se detecta el fallo (status != 0).
++ cat
++ check_deps
++ deps=('python3' 'grep')
++ local -a deps
++ for dep in "${deps[@]}"
++ command -v python3
++ for dep in "${deps[@]}"
++ command -v grep
++ run_tests src/hello.py
++ local script=src/hello.py
++ local output
+++ python3 src/hello.py
++ output='Hello, Aldo!'
++ echo 'Hello, Aldo!'
++ grep -Fq 'Hello, World!'
++ echo 'Test falló: salida inesperada'
+Test falló: salida inesperada
++ mv -- src/hello.py src/hello.py.bak
++ exit 2
++ cleanup 2
++ rc=2
++ rm -f /tmp/tmp.j0HA5B7DFI
++ '[' -f src/hello.py.bak ']'
++ mv -- src/hello.py.bak src/hello.py
++ exit 2
+```
