@@ -1,0 +1,37 @@
+Artifacts 
+total 4.8M
+drwxr-xr-x 2 aldolunab aldolunab 4.0K Dec 14 21:45 .
+drwxr-xr-x 8 aldolunab aldolunab 4.0K Dec 14 21:54 ..
+-rw-r--r-- 1 aldolunab aldolunab 229K Dec 14 21:46 order-service-grype.sarif
+-rw-r--r-- 1 aldolunab aldolunab 2.2M Dec 14 21:44 order-service-sbom.json
+-rw-r--r-- 1 aldolunab aldolunab 1.1K Dec 14 21:34 order-service.yaml
+-rw-r--r-- 1 aldolunab aldolunab 229K Dec 14 21:45 user-service-grype.sarif
+-rw-r--r-- 1 aldolunab aldolunab 2.2M Dec 14 21:42 user-service-sbom.json
+-rw-r--r-- 1 aldolunab aldolunab 1.1K Dec 14 21:33 user-service.yaml
+
+SBOMs 
+artifacts/order-service-sbom.json
+artifacts/user-service-sbom.json
+
+SCA (SARIF) 
+artifacts/order-service-grype.sarif
+artifacts/user-service-grype.sarif
+
+Manifests 
+artifacts/order-service.yaml
+artifacts/user-service.yaml
+
+Deployments 
+NAME            READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS      IMAGES                  SELECTOR
+order-service   1/1     1            1           20m   order-service   order-service:5abab6f   app=order-service
+user-service    1/1     1            1           21m   user-service    user-service:5abab6f    app=user-service
+
+Services 
+NAME            TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+kubernetes      ClusterIP   10.96.0.1       <none>        443/TCP    33m
+order-service   ClusterIP   10.106.244.5    <none>        8001/TCP   20m
+user-service    ClusterIP   10.107.171.82   <none>        8000/TCP   21m
+
+EndpointSlices 
+order-service-sh54q   IPv4          8001    10.244.0.4     20m
+user-service-j8d6b    IPv4          8000    10.244.0.7     21m

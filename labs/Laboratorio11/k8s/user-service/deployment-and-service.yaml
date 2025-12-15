@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: user-service
-          image: user-service:CHANGEME
+          image: user-service:5abab6f
           imagePullPolicy: IfNotPresent
           env:
             - name: PORT
